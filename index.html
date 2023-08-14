@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      input {
+        width: 100px;
+        margin-left: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Bài 1: -->
+    <h3>Bài 1:</h3>
+    <label>Nhập số a</label><input id="number1" /> <label>Nhập số b</label><input id="number2" />
+    <button id="btn1">Click</button>
+    <p id="result1"></p>
+    <!-- Bài 2 -->
+    <h3>Bài 2:</h3>
+    <label>Nhập tuổi</label><input step="1" id="age" />
+    <p id="result2"></p>
+    <!-- Bài 3 -->
+    <h3>Bài 3:</h3>
+    <label>Nhập số nguyên</label><input id="int" />
+    <p id="result3"></p>
+    <!-- Bài 4 -->
+    <h3>Bài 4:</h3>
+    <label for="so-a">Nhập số a<input autocomplete="off" id="so-a" /></label>
+    <label for="so-b">Nhập số b<input autocomplete="off" id="so-b" /></label>
+    <label for="so-c">Nhập số c<input autocomplete="off" id="so-c" /></label>
+    <button id="btn2">Click</button>
+    <p id="result4"></p>
+    <!-- Bài 5: -->
+    <h3>Bài 5:</h3>
+    <label>Điểm kiểm tra</label><input id="testmark" /> <label>Điểm giữa kỳ</label
+    ><input id="midterm" /> <label>Điểm cuối kỳ</label><input id="endterm" />
+    <button id="btn3">Click</button>
+    <p id="result5"></p>
+    <!-- Bài 6: -->
+    <h3>Bài 6:</h3>
+    <label>Doanh số</label><input id="sales" /> VND <label>- Hoa hồng<input id="comm" />%</label>
+    <button id="btn4">Click</button>
+    <p id="result6"></p>
+    <script>
+      // Bài 1
+      document.getElementById("btn1").addEventListener("click", () => {
+        let a = Number(document.getElementById("number1").value);
+        let b = Number(document.getElementById("number2").value);
+        if (a % b == 0) {
+          document.getElementById("result1").innerHTML = `${a} chia hết cho ${b}`;
+        } else {
+          document.getElementById("result1").innerHTML = `${a} không chia hết cho ${b}`;
+        }
+      });
+      // Bài 2
+      document.getElementById("age").addEventListener("input", (e) => {
+        if (e.target.value >= 15) {
+          document.getElementById("result2").innerHTML = "Đủ điều kiện học lớp 10";
+        } else {
+          document.getElementById("result2").innerHTML = "Không đủ điều kiện học lớp 10";
+        }
+      });
+      // Bài 3
+      document.getElementById("int").addEventListener("input", (e) => {
+        if (e.target.value > 0) {
+          document.getElementById("result3").innerHTML = `${e.target.value} lớn hơn 0`;
+        } else if (e.target.value < 0) {
+          document.getElementById("result3").innerHTML = `${e.target.value} nhỏ hơn 0`;
+        } else {
+          document.getElementById("result3").innerHTML = `0 thì chả bằng 0 à`;
+        }
+      });
+      // Bài 4
+      document.getElementById("btn2").addEventListener("click", () => {
+        let soA = Number(document.getElementById("so-a").value);
+        let soB = Number(document.getElementById("so-b").value);
+        let soC = Number(document.getElementById("so-c").value);
+        let ketqua = document.getElementById("result4");
+        if (soA > soB && soA > soC) {
+          ketqua.innerHTML = `Số lớn nhất là ${soA}`;
+        } else if (soB > soA && soB > soC) {
+          ketqua.innerHTML = `Số lớn nhất là ${soB}`;
+        } else if (soC > soA && soC > soB) {
+          ketqua.innerHTML = `Số lớn nhất là ${soC}`;
+        }
+      });
+      //Bài 5
+      document.getElementById("btn3").addEventListener("click", () => {
+        let mark1 = Number(document.getElementById("testmark").value);
+        let mark2 = Number(document.getElementById("midterm").value);
+        let mark3 = Number(document.getElementById("endterm").value);
+        let finalmark = (mark1 * 10 + mark2 * 20 + mark3 * 70) / 100;
+
+        if (finalmark >= 8) {
+          document.getElementById(
+            "result5"
+          ).innerHTML = `Điểm trung bình là ${finalmark}. Xếp loại học lực giỏi`;
+        } else if (finalmark >= 6.5) {
+          document.getElementById(
+            "result5"
+          ).innerHTML = `Điểm trung bình là ${finalmark}. Xếp loại học lực khá`;
+        } else if (finalmark >= 5) {
+          document.getElementById(
+            "result5"
+          ).innerHTML = `Điểm trung bình là ${finalmark}. Xếp loại học lực trung bình`;
+        } else if (finalmark >= 0) {
+          document.getElementById(
+            "result5"
+          ).innerHTML = `Điểm trung bình là ${finalmark}. Xếp loại học lực yếu`;
+        }
+      });
+      // Bài 6
+      document.getElementById("btn4").addEventListener("click", () => {
+        let sales = document.getElementById("sales").value;
+        let comm = document.getElementById("comm").value;
+        let finalcomm = (sales * comm) / 100;
+        document.getElementById("result6").innerHTML = `Hoa hồng nhận được: ${finalcomm}VND`;
+      });
+    </script>
+  </body>
+</html>

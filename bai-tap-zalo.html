@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      input {
+        width: 100px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Bài 1 -->
+    <label for="age">Nhập tuổi<input autocomplete="off" id="age" /></label>
+    <p id="result1"></p>
+    <br /><br />
+    <!-- Bài 2 -->
+    <label for="number-a">Nhập số a<input autocomplete="off" id="number-a" /></label>
+    <p id="result2"></p>
+    <br /><br />
+    <!-- Bài 3 -->
+    <label for="first-number">Nhập số a<input autocomplete="off" id="first-number" /></label>
+    <label for="second-number">Nhập số b<input autocomplete="off" id="second-number" /></label>
+    <button id="btn1">Click</button>
+    <p id="result3"></p>
+    <br /><br />
+    <!-- Bài 4 -->
+    <label for="so-a">Nhập số a<input autocomplete="off" id="so-a" /></label>
+    <label for="so-b">Nhập số b<input autocomplete="off" id="so-b" /></label>
+    <label for="so-c">Nhập số c<input autocomplete="off" id="so-c" /></label>
+    <button id="btn2">Click</button>
+    <p id="result4"></p>
+    <script>
+      // Bài 1
+      let age = document.getElementById("age");
+      age.addEventListener("input", (e) => {
+        if (e.target.value > 18) {
+          document.getElementById("result1").innerHTML = "Đủ tuổi";
+        } else {
+          document.getElementById("result1").innerHTML = "Chưa đủ tuổi";
+        }
+      });
+      // Bài 2
+      let a = document.getElementById("number-a");
+      a.addEventListener("input", (e) => {
+        if (e.target.value % 2 == 0) {
+          document.getElementById("result2").innerHTML = "Hello";
+        } else {
+          document.getElementById("result2").innerHTML = "Hi";
+        }
+      });
+      // Bài 3
+      document.getElementById("btn1").addEventListener("click", () => {
+        let firstNumber = Number(document.getElementById("first-number").value);
+        let secondNumber = Number(document.getElementById("second-number").value);
+        let ketqua = document.getElementById("result3");
+        let r;
+        if (firstNumber > secondNumber) {
+          r = firstNumber + secondNumber;
+          ketqua.innerHTML = `Tổng là ${r}`;
+        } else if (firstNumber < secondNumber) {
+          r = firstNumber * secondNumber;
+          ketqua.innerHTML = `Tích là ${r}`;
+        } else {
+          ketqua.innerHTML = "Hihi";
+        }
+      });
+      // Bài 4
+      document.getElementById("btn2").addEventListener("click", () => {
+        let soA = Number(document.getElementById("so-a").value);
+        let soB = Number(document.getElementById("so-b").value);
+        let soC = Number(document.getElementById("so-c").value);
+        let ketqua = document.getElementById("result4");
+        if (soA > soB && soA > soC) {
+          ketqua.innerHTML = `Số lớn nhất là ${soA}`;
+        } else if (soB > soA && soB > soC) {
+          ketqua.innerHTML = `Số lớn nhất là ${soB}`;
+        } else if (soC > soA && soC > soB) {
+          ketqua.innerHTML = `Số lớn nhất là ${soC}`;
+        }
+      });
+    </script>
+  </body>
+</html>
